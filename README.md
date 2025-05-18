@@ -11,13 +11,13 @@ Install the NuGet package:
 ### .NET CLI
 
 ```bash
-dotnet add package OxCore.QuantumQueue.Core
+dotnet add package OxCore.QuantumQueue.Core --version 8.0.2
 ```
 
 ### Package Manager
 
 ```powershell
-Install-Package OxCore.QuantumQueue.Core
+Install-Package OxCore.QuantumQueue.Core --version 8.0.2
 ```
 
 ---

@@ -12,12 +12,14 @@
 		<PackageId>OxCore.QuantumQueue.Core</PackageId>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>QuantumQueue.jpg</PackageIcon>
-		<Version>8.0.0</Version>
+		<Version>8.0.2</Version>
 		<NeutralLanguage>en-001</NeutralLanguage>
-		<AssemblyVersion>8.0.0</AssemblyVersion>
-		<FileVersion>8.0.0</FileVersion>
+		<AssemblyVersion>8.0.2</AssemblyVersion>
+		<FileVersion>8.0.2</FileVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

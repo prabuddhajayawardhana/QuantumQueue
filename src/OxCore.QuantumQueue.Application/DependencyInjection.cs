@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using OxCore.QuantumQueue.Application.Services.Scheduler.Implementation;
 using OxCore.QuantumQueue.Application.Services.Scheduler;
 

@@ -1,0 +1,6 @@
+@OxCore.QuantumQueue.Api_HostAddress = http://localhost:5023
+
+GET {{OxCore.QuantumQueue.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

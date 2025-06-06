@@ -1,14 +1,18 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using OxCore.QuantumQueue.Application.Services.Scheduler.Implementation;
 using OxCore.QuantumQueue.Application.Services.Scheduler;
+using OxCore.QuantumQueue.Application.Services.Scheduler.Implementation;
+using OxCore.QuantumQueue.SharedKernel.Configuration;
+using OxCore.QuantumQueue.SharedKernel.Constants;
 
 namespace OxCore.QuantumQueue.Application;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection OxCoreService(this IServiceCollection services)
+    public static IServiceCollection OxCoreService(this IServiceCollection services, IConfigurationManager configuration)
     {
+        services.Configure<JobSettings>(configuration.GetSection(SystemConstants.JobSettings));
         // Register logger factory
         services.AddSingleton<Func<string, ILogger>>(sp =>
         {

@@ -11,13 +11,13 @@ Install the NuGet package:
 ### .NET CLI
 
 ```bash
-dotnet add package OxCore.QuantumQueue.Core --version 9.0.3
+dotnet add package OxCore.QuantumQueue.Core --version 9.0.2
 ```
 
 ### Package Manager
 
 ```powershell
-Install-Package OxCore.QuantumQueue.Core --version 9.0.3
+Install-Package OxCore.QuantumQueue.Core --version 9.0.2
 ```
 
 ---
@@ -52,6 +52,19 @@ This activates the job scheduler and runs all registered jobs based on their def
 
 ---
 
+```csharp
+Configure Jobs in appsettings.json
+```
+
+Use a simplified format to declare CRON intervals:
+
+```csharp
+"JobSettings": {
+   "SampleJob": "*/2 * * * *",
+   "DataSyncJob": "0 */5 * * * *"
+}
+```
+
 ### 3⃣ Create a Job
 
 Implement the `IJob` interface to define a recurring background task:
@@ -59,14 +72,15 @@ Implement the `IJob` interface to define a recurring background task:
 ```csharp
 using OxCore.QuantumQueue;
 
-public class SampleJob : IJob
+public class SampleJob : ConfigurableJobBase<FirstJob>, IJob
 {
-    public string CronExpression => "*/5 * * * *"; // every 5 minutes
+    public SampleJob(Func<string, ILogger> getLogger, IOptions<JobSettings> jobOptions)
+        : base(getLogger, jobOptions) { }
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        Console.WriteLine($"[SampleJob] Executed at: {DateTime.Now}");
-        await Task.CompletedTask;
+        Logger.LogInformation($"[SampleJob] Executed at: {DateTime.Now} with interval: {Interval}");
+        await Task.Delay(30000, cancellationToken);
     }
 }
 ```
@@ -82,13 +96,14 @@ You do not need to manually register your job; it is automatically discovered an
 ## 🧪 Example: Data Sync Job
 
 ```csharp
-public class DataSyncJob : IJob
+public class DataSyncJob : ConfigurableJobBase<FirstJob>, IJob
 {
-    public string CronExpression => "0 */6 * * *"; // Every 6 hours
+    public DataSyncJob(Func<string, ILogger> getLogger, IOptions<JobSettings> jobOptions)
+        : base(getLogger, jobOptions) { }
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        Console.WriteLine("[DataSyncJob] Syncing data...");
+        Logger.LogInformation($"[DataSyncJob] Executed at: {DateTime.Now} with interval: {Interval}");
         await MySyncService.SynchronizeAsync();
     }
 }
@@ -121,16 +136,15 @@ Use [crontab.guru](https://crontab.guru) to generate or validate CRON expression
 You can inject services inside your jobs using constructor injection:
 
 ```csharp
-public class EmailJob : IJob
+public class EmailJob : ConfigurableJobBase<FirstJob>, IJob
 {
     private readonly IEmailService _emailService;
 
-    public EmailJob(IEmailService emailService)
+    public EmailJob(Func<string, ILogger> getLogger, IOptions<JobSettings> jobOptions, IEmailService emailService)
+        : base(getLogger, jobOptions) 
     {
-        _emailService = emailService;
+        _emailService = emailService;    
     }
-
-    public string CronExpression => "0 8 * * *"; // Every day at 8 AM
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {

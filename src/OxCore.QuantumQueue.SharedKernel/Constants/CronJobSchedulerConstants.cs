@@ -17,4 +17,6 @@ public static class CronJobSchedulerConstants
     public const string JobCompleted = "Job '{0}' completed successfully.";
     public const string ErrorExecutingJob = "Error executing job '{0}'.";
     public const string JobIsPaused = "Job '{0}' is paused. Skipping.";
+    public const string ConfigurableJobBaseException = "Interval for job '{Name}' not found in JobSettings.";
+    
 }

@@ -12,9 +12,9 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>QuantumQueue.jpg</PackageIcon>
 		<NeutralLanguage>en-001</NeutralLanguage>
-		<Version>9.0.3</Version>
-		<AssemblyVersion>9.0.3</AssemblyVersion>
-		<FileVersion>9.0.3</FileVersion>
+		<Version>9.0.2</Version>
+		<AssemblyVersion>9.0.2</AssemblyVersion>
+		<FileVersion>9.0.2</FileVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
@@ -45,6 +45,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Icon\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\OxCore.QuantumQueue.SharedKernel\OxCore.QuantumQueue.SharedKernel.csproj" />
 	</ItemGroup>
 
 </Project>

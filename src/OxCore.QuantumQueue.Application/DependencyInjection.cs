@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using OxCore.QuantumQueue.Application.Services.Scheduler.Implementation;
 using OxCore.QuantumQueue.Application.Services.Scheduler;
 
@@ -9,6 +9,13 @@ public static class DependencyInjection
 {
     public static IServiceCollection OxCoreService(this IServiceCollection services)
     {
+        // Register logger factory
+        services.AddSingleton<Func<string, ILogger>>(sp =>
+        {
+            var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
+            return category => loggerFactory.CreateLogger(category);
+        });
+
         // Auto-register jobs on startup
         // Discover and register all IJob implementations as Transient
         var jobTypes = AppDomain.CurrentDomain.GetAssemblies()

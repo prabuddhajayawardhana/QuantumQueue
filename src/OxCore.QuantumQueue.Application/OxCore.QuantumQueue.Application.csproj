@@ -4,7 +4,6 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Company>OxCore</Company>
 		<Title>OxCore Quantum Queue</Title>
 		<Authors>Prabuddha Jayawardhana</Authors>
@@ -13,27 +12,19 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>QuantumQueue.jpg</PackageIcon>
 		<NeutralLanguage>en-001</NeutralLanguage>
-		<Version>9.0.0</Version>
-		<AssemblyVersion>9.0.0</AssemblyVersion>
-		<FileVersion>9.0.0</FileVersion>
+		<Version>9.0.1</Version>
+		<AssemblyVersion>9.0.1</AssemblyVersion>
+		<FileVersion>9.0.1</FileVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<IncludeSymbols>false</IncludeSymbols>
-		<IncludeSource>false</IncludeSource>
-		<DebugType>none</DebugType>
-		<EnableDefaultItems>false</EnableDefaultItems>
+		<Copyright>OxCore Team</Copyright>
+		<PackageTags>Scheduler, Task, JobRunner, Job</PackageTags>
+		<Description>OxCore.QuantumQueue is a lightweight, CRON-based job scheduler for .NET applications. Designed to be modular and developer-friendly, it lets you easily run background tasks with precise control over execution timing.</Description>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/prabuddhajayawardhana/QuantumQueue</PackageProjectUrl>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Include="DependencyInjection.cs" />
-	  <Compile Include="Dto\Scheduler\ScheduledJobDto.cs" />
-	  <Compile Include="Extensions\JobSchedulerExtensions.cs" />
-	  <Compile Include="Services\Scheduler\IJob.cs" />
-	  <Compile Include="Services\Scheduler\IJobScheduler.cs" />
-	  <Compile Include="Services\Scheduler\Implementation\CronJobScheduler.cs" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.4" />

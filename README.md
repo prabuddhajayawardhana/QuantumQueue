@@ -61,7 +61,7 @@ Use a simplified format to declare CRON intervals:
 ```csharp
 "JobSettings": {
    "SampleJob": "*/2 * * * *",
-   "DataSyncJob": "0 */5 * * * *"
+   "DataSyncJob": "0 0 1,15 * *"
 }
 ```
 

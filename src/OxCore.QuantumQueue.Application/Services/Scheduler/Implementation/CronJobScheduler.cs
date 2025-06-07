@@ -214,6 +214,24 @@ public class CronJobScheduler : BackgroundService, IJobScheduler
     private int ParseCronPart(string part, int currentValue, int minValue, int maxValue)
     {
         if (part == "*") return currentValue;
+        
+        // Handle comma-separated values
+        if (part.Contains(","))
+        {
+            var values = part.Split(',')
+                .Select(p => int.Parse(p.Trim(), CultureInfo.InvariantCulture))
+                .Where(v => v >= minValue && v <= maxValue)
+                .OrderBy(v => v)
+                .ToList();
+
+            if (!values.Any())
+                throw new ArgumentException(string.Format(CronJobSchedulerConstants.InvalidStepValue, part));
+
+            // Find the next value that is greater than or equal to current value
+            var nextValue = values.FirstOrDefault(v => v >= currentValue);
+            return nextValue != 0 ? nextValue : values[0];
+        }
+
         if (part.StartsWith("*/"))
         {
             if (int.TryParse(part.Substring(2), out int step))
@@ -223,6 +241,7 @@ public class CronJobScheduler : BackgroundService, IJobScheduler
             }
             throw new ArgumentException(string.Format(CronJobSchedulerConstants.InvalidStepValue, part));
         }
+
         int parsedValue = int.Parse(part, CultureInfo.InvariantCulture);
         return Math.Clamp(parsedValue, minValue, maxValue);
     }

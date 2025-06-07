@@ -87,12 +87,6 @@ public class SampleJob : ConfigurableJobBase<FirstJob>, IJob
 
 ---
 
-### 4⃣ Register the Job
-
-You do not need to manually register your job; it is automatically discovered and registered by the application.
-
----
-
 ## 🧪 Example: Data Sync Job
 
 ```csharp
@@ -108,6 +102,10 @@ public class DataSyncJob : ConfigurableJobBase<FirstJob>, IJob
     }
 }
 ```
+
+### 4⃣ Register the Job
+
+You do not need to manually register your job; it is automatically discovered and registered by the application.
 
 ---
 
@@ -165,7 +163,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 * ✅ Simple setup and lightweight design
 * ⏱️ Flexible CRON-based scheduling
-* ♻️ Supports scoped DI with `IJob`
+* ♻️ Supports scoped DI with 'ConfigurableJobBase<FirstJob>' and `IJob`
 * 🥵 Thread-safe and cancellation-aware
 * 🔄 Automatically discovers and runs all registered jobs
 * 🧪 Testable architecture with modular components

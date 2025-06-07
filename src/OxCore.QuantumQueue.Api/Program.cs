@@ -23,7 +23,7 @@ builder.Host.UseSerilog();
 builder.Services.AddSingleton<Func<string, ILogger>>(sp => LoggerFactoryExtension.GetLoggerForService);
 
 // Add services to the container.
-builder.Services.OxCoreService();
+builder.Services.OxCoreService(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

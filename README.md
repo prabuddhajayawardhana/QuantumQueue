@@ -67,12 +67,12 @@ Use a simplified format to declare CRON intervals:
 
 ### 3⃣ Create a Job
 
-Implement the `IJob` interface to define a recurring background task:
+Implement the `ConfigurableJobBase<T>` and `IJob` interface to define a recurring background task:
 
 ```csharp
 using OxCore.QuantumQueue;
 
-public class SampleJob : ConfigurableJobBase<FirstJob>, IJob
+public class SampleJob : ConfigurableJobBase<SampleJob>, IJob
 {
     public SampleJob(Func<string, ILogger> getLogger, IOptions<JobSettings> jobOptions)
         : base(getLogger, jobOptions) { }
@@ -90,7 +90,7 @@ public class SampleJob : ConfigurableJobBase<FirstJob>, IJob
 ## 🧪 Example: Data Sync Job
 
 ```csharp
-public class DataSyncJob : ConfigurableJobBase<FirstJob>, IJob
+public class DataSyncJob : ConfigurableJobBase<DataSyncJob>, IJob
 {
     public DataSyncJob(Func<string, ILogger> getLogger, IOptions<JobSettings> jobOptions)
         : base(getLogger, jobOptions) { }
@@ -134,7 +134,7 @@ Use [crontab.guru](https://crontab.guru) to generate or validate CRON expression
 You can inject services inside your jobs using constructor injection:
 
 ```csharp
-public class EmailJob : ConfigurableJobBase<FirstJob>, IJob
+public class EmailJob : ConfigurableJobBase<EmailJob>, IJob
 {
     private readonly IEmailService _emailService;
 

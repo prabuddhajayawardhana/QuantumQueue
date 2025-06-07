@@ -23,7 +23,7 @@ builder.Host.UseSerilog();
 builder.Services.AddSingleton<Func<string, ILogger>>(sp => LoggerFactoryExtension.GetLoggerForService);
 
 // Add services to the container.
-//builder.Services.OxCoreService();
+builder.Services.OxCoreService();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -57,7 +57,7 @@ if (app.Environment.IsDevelopment())
 // Add React app middleware before routing
 app.UseMiddleware<ReactAppMiddleware>();
 
-//app.UseJobScheduler();
+app.UseJobScheduler();
 
 app.UseHttpsRedirection();
 app.UseCors();

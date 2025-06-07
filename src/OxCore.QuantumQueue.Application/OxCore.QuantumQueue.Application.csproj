@@ -4,7 +4,6 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Company>OxCore</Company>
 		<Title>OxCore Quantum Queue</Title>
 		<Authors>Prabuddha Jayawardhana</Authors>
@@ -12,17 +11,24 @@
 		<PackageId>OxCore.QuantumQueue.Core</PackageId>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>QuantumQueue.jpg</PackageIcon>
-		<Version>1.0.4</Version>
 		<NeutralLanguage>en-001</NeutralLanguage>
-		<AssemblyVersion>1.0.4</AssemblyVersion>
-		<FileVersion>1.0.4</FileVersion>
+		<Version>9.0.3</Version>
+		<AssemblyVersion>9.0.3</AssemblyVersion>
+		<FileVersion>9.0.3</FileVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Copyright>OxCore Team</Copyright>
+		<PackageTags>Scheduler, Task, JobRunner, Job</PackageTags>
+		<Description>OxCore.QuantumQueue is a lightweight, CRON-based job scheduler for .NET applications. Designed to be modular and developer-friendly, it lets you easily run background tasks with precise control over execution timing.</Description>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/prabuddhajayawardhana/QuantumQueue</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.4" />
-		<PackageReference Include="OxCore.QuantumQueue.SharedKernel" Version="1.0.2" />
+		<PackageReference Include="OxCore.QuantumQueue.SharedKernel" Version="9.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,6 +45,10 @@
 
 	<ItemGroup>
 	  <Folder Include="Icon\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\OxCore.QuantumQueue.SharedKernel\OxCore.QuantumQueue.SharedKernel.csproj" />
 	</ItemGroup>
 
 </Project>

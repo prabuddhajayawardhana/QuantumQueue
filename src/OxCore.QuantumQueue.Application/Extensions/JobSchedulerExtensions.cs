@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using OxCore.QuantumQueue.Application.Services.Scheduler;
 using OxCore.QuantumQueue.Application.Services.Scheduler.Implementation;
-using System.Reflection;
 
 namespace OxCore.QuantumQueue.Application.Extensions;
 

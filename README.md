@@ -163,7 +163,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 * ✅ Simple setup and lightweight design
 * ⏱️ Flexible CRON-based scheduling
-* ♻️ Supports scoped DI with 'ConfigurableJobBase<FirstJob>' and `IJob`
+* ♻️ Supports scoped DI with `ConfigurableJobBase<FirstJob>` and `IJob`
 * 🥵 Thread-safe and cancellation-aware
 * 🔄 Automatically discovers and runs all registered jobs
 * 🧪 Testable architecture with modular components

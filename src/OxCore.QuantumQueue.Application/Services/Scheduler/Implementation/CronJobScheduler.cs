@@ -123,7 +123,6 @@ public class CronJobScheduler : BackgroundService, IJobScheduler
             logger.LogInformation(string.Format(CronJobSchedulerConstants.ExecutingJob, job.Name));
             _nextRunTimes[job.Name] = GetNextRunTime(job.Interval);
             await job.ExecuteAsync(stoppingToken);
-            logger.LogInformation(string.Format(CronJobSchedulerConstants.JobCompleted, job.Name));
         }
         catch (Exception ex)
         {
@@ -132,6 +131,7 @@ public class CronJobScheduler : BackgroundService, IJobScheduler
         finally
         {
             jobLock.Release();
+            logger.LogInformation(string.Format(CronJobSchedulerConstants.JobCompleted, job.Name));
         }
     }
 
